@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Oxana Garascenco](https://up.htmlacademy.ru/react/10/user/122666).
-* Наставник: `Неизвестно`.
+* Наставник: [Юрий Лаврухин](https://htmlacademy.ru/profile/id2038891).
 
 ---
 
