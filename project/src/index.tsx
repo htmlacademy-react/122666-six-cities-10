@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
 const Settings = {
-  PLACES_NUMBER: 5
+  PLACES_AMOUNT: 5
 };
 
 const root = ReactDOM.createRoot(
@@ -12,6 +12,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App placesNumber = {Settings.PLACES_NUMBER}/>
+    <App placesAmount = {Settings.PLACES_AMOUNT}/>
   </React.StrictMode>,
 );

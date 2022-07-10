@@ -1,11 +1,11 @@
 import Place from '../../components/place/place';
 
 type MainPageProps = {
-  placesNumber: number
+  placesAmount: number
 }
 
-function MainPage({placesNumber}: MainPageProps): JSX.Element {
-  const places = Array.from({length:placesNumber});
+function MainPage({placesAmount}: MainPageProps): JSX.Element {
+  const places = Array.from({length:placesAmount});
   return(
     <div className="page page--gray page--main">
       <header className="header">
@@ -79,7 +79,7 @@ function MainPage({placesNumber}: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesNumber} places to stay in Amsterdam</b>
+              <b className="places__found">{placesAmount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
