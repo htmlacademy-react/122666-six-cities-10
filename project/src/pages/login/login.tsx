@@ -1,7 +1,7 @@
 function Login(): JSX.Element {
   return (
     <div className="page page--gray page--login">
-      <header className="header">
+      {/* <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
@@ -11,7 +11,7 @@ function Login(): JSX.Element {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">
@@ -31,7 +31,7 @@ function Login(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <a className="locations__item-link" href="/">
                 <span>Amsterdam</span>
               </a>
             </div>

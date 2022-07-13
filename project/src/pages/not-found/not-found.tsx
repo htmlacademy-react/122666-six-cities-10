@@ -1,7 +1,7 @@
 function NotFound(): JSX.Element {
   return (
     <div className="page" style={{display:'flex',flexDirection:'column'}}>
-      <header className="header">
+      {/* <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
@@ -12,7 +12,7 @@ function NotFound(): JSX.Element {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <a className="header__nav-link header__nav-link--profile" href="/">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
@@ -20,7 +20,7 @@ function NotFound(): JSX.Element {
                   </a>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <a className="header__nav-link" href="/">
                     <span className="header__signout">Sign out</span>
                   </a>
                 </li>
@@ -28,13 +28,13 @@ function NotFound(): JSX.Element {
             </nav>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="page__main page__main--not-found" style={{flexGrow:1}}>
         <div className="container">
           <section className="not-found" style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
             <p style={{fontSize:'40px', lineHeight:'42px'}}>404 Not Found</p>
-            <a href="#" style={{background:'#4481c3', color:'#fff', borderRadius:'15px', fontWeight:'600', padding:'5px 15px'}}>Home</a>
+            <a href="/" style={{background:'#4481c3', color:'#fff', borderRadius:'15px', fontWeight:'600', padding:'5px 15px'}}>Home</a>
           </section>
         </div>
       </main>
