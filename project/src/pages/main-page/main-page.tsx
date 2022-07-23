@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import Place from '../../components/place/place';
+import {Offers} from '../../types/offers';
 
 type MainPageProps = {
-  placesAmount: number
+  placesAmount: number,
+  offers: Offers
 }
 
-function MainPage({placesAmount}: MainPageProps): JSX.Element {
-  const places = Array.from({length:placesAmount});
+function MainPage({placesAmount, offers}: MainPageProps): JSX.Element {
+  const [activeCardId, setActiveCardId] = useState<number>();
   return(
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">
@@ -67,7 +70,7 @@ function MainPage({placesAmount}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {places.map((place) => <Place key={`place-${place}`} />)}
+                {offers.map((offer) => <Place key={`place-${offer.id}`} offer={offer} isActive={offer.id === activeCardId} setActive={setActiveCardId}/>)}
               </div>
             </section>
             <div className="cities__right-section">
