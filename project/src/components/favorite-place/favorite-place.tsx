@@ -1,17 +1,10 @@
 import { useState } from 'react';
 import {Offer} from '../../types/offers';
 import {Link} from 'react-router-dom';
+import PremiumStateLabel from '../../components/premium-state-label/premium-state-label';
 
 type PlaceProps = {
   offer: Offer
-}
-
-function PremiumState(): JSX.Element {
-  return (
-    <div className="place-card__mark">
-      <span>Premium</span>
-    </div>
-  );
 }
 
 function FavoritePlace({offer}:PlaceProps): JSX.Element {
@@ -22,7 +15,7 @@ function FavoritePlace({offer}:PlaceProps): JSX.Element {
   const roomLink = `offer/${id}`;
   return (
     <article className="favorites__card place-card">
-      { offerIsPremium && <PremiumState /> }
+      { offerIsPremium && <PremiumStateLabel className='place-card__mark'/> }
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={roomLink}>
           <img className="place-card__image" src={previewImage} width="150" height="110" alt={title} />

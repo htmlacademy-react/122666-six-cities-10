@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Offer} from '../../types/offers';
 import {Link} from 'react-router-dom';
+import PremiumStateLabel from '../../components/premium-state-label/premium-state-label';
 
 type PlaceProps = {
   offer: Offer,
@@ -8,25 +9,16 @@ type PlaceProps = {
   setActive: (id:number)=>void
 }
 
-function PremiumState(): JSX.Element {
-  return (
-    <div className="place-card__mark">
-      <span>Premium</span>
-    </div>
-  );
-}
-
 function Place({offer, isActive, setActive}:PlaceProps): JSX.Element {
   const {isFavorite, isPremium, id, previewImage, title, price, rating, type} = offer;
   const [offerIsFavorite, setIsFavorite] = useState(isFavorite);
-  const [offerIsPremium] = useState(isPremium);
   const bookmarkBtnClassName = offerIsFavorite ? 'place-card__bookmark-button button place-card__bookmark-button--active' : 'place-card__bookmark-button button';
   const roomLink = `offer/${id}`;
   const formattedOfferType = `${type[0].toUpperCase()}${type.substring(1)}`;
 
   return (
     <article className="cities__card place-card" onMouseOver={() => setActive(id)}>
-      { offerIsPremium && <PremiumState /> }
+      { isPremium && <PremiumStateLabel className='place-card__mark'/> }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={roomLink}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title} />
