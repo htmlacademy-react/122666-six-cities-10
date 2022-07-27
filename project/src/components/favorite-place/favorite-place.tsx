@@ -4,27 +4,24 @@ import {Link} from 'react-router-dom';
 import PremiumStateLabel from '../../components/premium-state-label/premium-state-label';
 
 type PlaceProps = {
-  offer: Offer,
-  isActive:boolean,
-  setActive: (id:number)=>void
+  offer: Offer
 }
 
-function Place({offer, isActive, setActive}:PlaceProps): JSX.Element {
-  const {isFavorite, isPremium, id, previewImage, title, price, rating, type} = offer;
+function FavoritePlace({offer}:PlaceProps): JSX.Element {
+  const {isFavorite, isPremium, id, title, price, rating, type, previewImage} = offer;
   const [offerIsFavorite, setIsFavorite] = useState(isFavorite);
+  const [offerIsPremium] = useState(isPremium);
   const bookmarkBtnClassName = offerIsFavorite ? 'place-card__bookmark-button button place-card__bookmark-button--active' : 'place-card__bookmark-button button';
   const roomLink = `offer/${id}`;
-  const formattedOfferType = `${type[0].toUpperCase()}${type.substring(1)}`;
-
   return (
-    <article className="cities__card place-card" onMouseOver={() => setActive(id)}>
-      { isPremium && <PremiumStateLabel className='place-card__mark'/> }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className="favorites__card place-card">
+      { offerIsPremium && <PremiumStateLabel className='place-card__mark'/> }
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={roomLink}>
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt={title} />
+          <img className="place-card__image" src={previewImage} width="150" height="110" alt={title} />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -46,10 +43,10 @@ function Place({offer, isActive, setActive}:PlaceProps): JSX.Element {
         <h2 className="place-card__name">
           <Link to={roomLink}>{title}</Link>
         </h2>
-        <p className="place-card__type">{formattedOfferType}</p>
+        <p className="place-card__type">{`${type[0].toUpperCase()}${type.substring(1)}`}</p>
       </div>
     </article>
   );
 }
 
-export default Place;
+export default FavoritePlace;
