@@ -37,9 +37,11 @@ function Room(): JSX.Element {
   const offer = offers.filter((item) => item.id === Number(id))[0];
   const {isPremium, images, title, rating, type, isFavorite, bedrooms, maxAdults, price, goods, host, description} = offer;
   const [roomIsFavorite, setRoomIsFavorite] = useState(isFavorite);
+  const imagesToRender = images.slice(0, MAX_IMAGES_AMOUNT);
   const bookmarkBtnClassName = roomIsFavorite ? 'property__bookmark-button button property__bookmark-button--active' : 'property__bookmark-button button';
   const bookmarkSvgClassName = roomIsFavorite ? 'property__bookmark-icon place-card__bookmark-icon' : 'property__bookmark-icon';
   const formattedRoomType = `${type[0].toUpperCase()}${type.substring(1)}`;
+  const reviewsToRender = reviews.slice(0, MAX_REVIEWS_AMOUNT);
 
   return (
     <div className="page">
@@ -47,7 +49,7 @@ function Room(): JSX.Element {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.map((src, i) => i <= MAX_IMAGES_AMOUNT - 1 && <ImageItem key={src} src={src} alt={type}/>)}
+              {imagesToRender.map((src) => <ImageItem key={src} src={src} alt={type}/>)}
             </div>
           </div>
           <div className="property__container container">
@@ -100,7 +102,7 @@ function Room(): JSX.Element {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ul className="reviews__list">
-                  {reviews.map((item, i)=> i <= MAX_REVIEWS_AMOUNT - 1 && <ReviewItem key={item.id} review={item}/>)}
+                  {reviewsToRender.map((item) => <ReviewItem key={item.id} review={item}/>)}
                 </ul>
                 <ReviewsForm />
               </section>
