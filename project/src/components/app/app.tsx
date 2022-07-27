@@ -7,7 +7,6 @@ import Room from '../../pages/room/room';
 import Login from '../../pages/login/login';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import ExistingRoom from '../existing-room/existing-room';
 import {Offers} from '../../types/offers';
 
 
@@ -30,12 +29,7 @@ function App({placesAmount, offers}: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Room} element={
-            <ExistingRoom offers={offers}>
-              <Room />
-            </ExistingRoom>
-          }
-          />
+          <Route path={AppRoute.Room} element={<Room />} />
           <Route path={AppRoute.Login} element={<Login />} />
         </Route>
         <Route path='*' element={<NotFound />} />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NotFound from '../not-found/not-found';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
 import ReviewItem from '../../components/reviews-item/reviews-item';
 import PremiumStateLabel from '../../components/premium-state-label/premium-state-label';
@@ -35,8 +36,11 @@ function Room(): JSX.Element {
   const MAX_REVIEWS_AMOUNT = 10;
   const {id} = useParams();
   const offer = offers.filter((item) => item.id === Number(id))[0];
-  const {isPremium, images, title, rating, type, isFavorite, bedrooms, maxAdults, price, goods, host, description} = offer;
-  const [roomIsFavorite, setRoomIsFavorite] = useState(isFavorite);
+  const [roomIsFavorite, setRoomIsFavorite] = useState(offer?.isFavorite || false);
+  if(!offer) {
+    return (<NotFound />);
+  }
+  const {isPremium, images, title, rating, type, bedrooms, maxAdults, price, goods, host, description} = offer;
   const imagesToRender = images.slice(0, MAX_IMAGES_AMOUNT);
   const bookmarkBtnClassName = roomIsFavorite ? 'property__bookmark-button button property__bookmark-button--active' : 'property__bookmark-button button';
   const bookmarkSvgClassName = roomIsFavorite ? 'property__bookmark-icon place-card__bookmark-icon' : 'property__bookmark-icon';
