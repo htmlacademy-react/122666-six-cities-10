@@ -1,9 +1,4 @@
-type Host = {
-  avatarUrl: string,
-  id: number,
-  isPro: boolean,
-  name: string
-}
+import { User } from './user';
 
 type Location = {
   latitude: number,
@@ -30,7 +25,7 @@ export type Offer = {
   city: City,
   description: string,
   goods: string[],
-  host: Host,
+  host: User,
   images: string[],
   location: Location,
 }
