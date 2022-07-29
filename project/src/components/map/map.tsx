@@ -52,7 +52,7 @@ function Map(props: MapProps):JSX.Element {
 
 
   return (
-    <section className="cities__map map" ref={mapRef}></section>
+    <div ref={mapRef}></div>
   );
 }
 
