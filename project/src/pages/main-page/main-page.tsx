@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Place from '../../components/place/place';
+import Map from '../../components/map/map';
 import {Offers} from '../../types/offers';
+import {points,city,selectedPoint} from '../../mocks/points';
 
 type MainPageProps = {
   placesAmount: number,
@@ -74,7 +76,9 @@ function MainPage({placesAmount, offers}: MainPageProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={city} points={points} selectedPoint={selectedPoint}/>
+              </section>
             </div>
           </div>
         </div>
