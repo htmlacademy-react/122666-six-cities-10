@@ -24,7 +24,7 @@ export const points:Points = [
   },
 ];
 
-export const city:City = {
+export const cityFull:City = {
   location: {
     latitude: 52.377956,
     longitude: 4.897070,
