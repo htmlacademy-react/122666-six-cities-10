@@ -52,7 +52,7 @@ function Map(props: MapProps):JSX.Element {
 
 
   return (
-    <div ref={mapRef}></div>
+    <div style={{height:'100%'}} ref={mapRef}></div>
   );
 }
 
