@@ -2,19 +2,13 @@ import { useState } from 'react';
 import Place from '../../components/place/place';
 import Map from '../../components/map/map';
 import CityTab from '../../components/city-tab/city-tab';
-import {points,cityFull,selectedPoint} from '../../mocks/points';
-import {cities} from '../../const';
-import { useAppSelector} from '../../hooks';
+import {cities} from '../../mocks/points';
+// import {cities} from '../../const';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { changeCity } from '../../store/actions';
-// import { changeOffers } from '../../store/actions';
-import { useAppDispatch } from '../../hooks';
 
 
-type MainPageProps = {
-  placesAmount: number,
-}
-
-function MainPage({placesAmount}: MainPageProps): JSX.Element {
+function MainPage(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<number>();
   const {offers, city} = useAppSelector((state)=>state);
 
@@ -22,10 +16,14 @@ function MainPage({placesAmount}: MainPageProps): JSX.Element {
 
   const onCityChange = (cityName: string) => {
     dispatch(changeCity(cityName));
-    // dispatch(changeOffers());
   };
 
-  // const getOffersByCity = () => offers.filter((offer) => offer.city.name === city);
+  const filteredOffers = offers.filter((offer) => offer.city.name === city);
+  const placesAmount = filteredOffers.length;
+  const cityFull = cities.filter((item) => item.name === city)[0];
+  const citiesNames = cities.map((item)=>item.name);
+  const points = filteredOffers.map((item)=>({latitude: item.location.latitude,longitude: item.location.longitude, title:item.title}));
+  const selectedPoint = points[0];
 
   return(
     <div className="page page--gray page--main">
@@ -34,7 +32,7 @@ function MainPage({placesAmount}: MainPageProps): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {cities.map((cityName)=><CityTab key={cityName} cityName={cityName} activeCity={city} onCityChange={onCityChange}/>)}
+              {citiesNames.map((cityName)=><CityTab key={cityName} cityName={cityName} activeCity={city} onCityChange={onCityChange}/>)}
             </ul>
           </section>
         </div>
@@ -59,7 +57,7 @@ function MainPage({placesAmount}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => <Place key={`place-${offer.id}`} offer={offer} isActive={offer.id === activeCardId} setActive={setActiveCardId}/>)}
+                {filteredOffers.map((offer) => <Place key={`place-${offer.id}`} offer={offer} isActive={offer.id === activeCardId} setActive={setActiveCardId}/>)}
               </div>
             </section>
             <div className="cities__right-section">

@@ -10,7 +10,7 @@ function CityTab({cityName, activeCity,onCityChange}:CityTabProps) {
 
   return (
     <li className="locations__item">
-      <span className={className} onClick={()=>{onCityChange(cityName);}}>
+      <span style={{cursor:'pointer'}} className={className} onClick={()=>{onCityChange(cityName);}}>
         <span>{cityName}</span>
       </span>
     </li>
